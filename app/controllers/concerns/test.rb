@@ -1,9 +1,10 @@
-module ExceptionHandler
-  # provides the more graceful `included` method
+module Test
   extend ActiveSupport::Concern
-  
   included do
     rescue_from ActiveRecord::RecordNotFound do |e|
+      if action_name == "show"
+        e.message = "Not Found by the id"
+      end
       json_response({ message: e.message }, :not_found)
     end
 
@@ -12,7 +13,7 @@ module ExceptionHandler
     end
   end
   
-  def hello 
-    render html: 'hello'
+  def hello
+      render html: 'hello'
   end
 end

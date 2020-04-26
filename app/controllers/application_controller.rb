@@ -1,8 +1,9 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
+    #inculde ExceptionHandler
     include Response
-    #include ExceptionHandler
-    def not_found
-        head :not_found
-    end
+    include Test
     
+    def not_found
+      head :not_found
+    end
 end

@@ -2,27 +2,27 @@ class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :update, :destroy]
     
     def index
-       @recipe = Recipe.all
-       json_response_index(@recipe)
+      @recipe = Recipe.all
+      json_response(@recipe)
     end
     
     def show
-        json_response_show(@recipe)
+      json_response(@recipe)
     end
     
     def create
-        @recipe = Recipe.create!(recipe_params)
-        json_response(@recipe)
+      @recipe = Recipe.create!(recipe_params)
+      json_response(@recipe)
     end
     
     def delete
-        @recipe.destroy
-        head :no_content
+      @recipe.destroy
+      json_response(@recipe)
     end
     
     def update
-        @recipe.update(recipe_params)
-        head :no_content
+      @recipe.update(recipe_params)
+      json_response(@recipe)
     end
     
     private
