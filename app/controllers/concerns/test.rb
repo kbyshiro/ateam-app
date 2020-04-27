@@ -9,11 +9,10 @@ module Test
     end
 
     rescue_from ActiveRecord::RecordInvalid do |e|
+      if action_name == "create" or action_name =="update"
+        e.message = "uncertain property, input title,making_time,serves,ingredients,cost"
+      end
       json_response({ message: e.message }, :unprocessable_entity)
     end
-  end
-  
-  def hello
-      render html: 'hello'
   end
 end

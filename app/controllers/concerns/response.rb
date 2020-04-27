@@ -7,7 +7,7 @@ module Response
   
   def json_response(object, status = :ok)
     if action_name == "index" 
-      object = object.select(:id,:title,:making_time,:serves,:cost)
+      object = object.select(:id,:title,:making_time,:serves,:ingredients,:cost)
       object = {recipes: object}
       
     elsif action_name =="show" 
